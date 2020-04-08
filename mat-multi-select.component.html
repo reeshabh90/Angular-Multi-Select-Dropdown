@@ -1,0 +1,15 @@
+<mat-form-field class='customMatInpt' appearance="outline">
+    <mat-select #selectElem [formControl]="formControl" multiple placeholder="Select" [(value)]="selectedValue">
+        <mat-select-trigger>
+            {{ onDisplayString() }}
+        </mat-select-trigger>
+        <!-- <mat-option #allSelected (click)="toggleAllSelection(allSelected)" [value]="0">All
+        </mat-option> -->
+        <mat-checkbox #allSelected (click)="$event.stopPropagation()" (change)="toggleAllSelection(allSelected)" class="mat-option">Select All</mat-checkbox>    
+        <mat-option *ngFor="let reqd of options" (click)="tosslePerOne(allSelected)" [value]="reqd.displayValue">
+            {{reqd.displayValue}}
+        </mat-option>
+    </mat-select>
+    <mat-icon matSuffix matTooltip="data.metaMap.labelHoverText">help_outline
+    </mat-icon>
+</mat-form-field>
